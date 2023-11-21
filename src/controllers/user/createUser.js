@@ -6,9 +6,8 @@ const createUser = async(req, res) => {
         const [result] = await user.create(req.body)
         if(result.affectedRows === 1){
             const newUser = req.body
-            delete newUser.pass
             res.status(201).json({
-                sucess: "User created",
+                sucess: "Paciente cadastrado",
                 user:{
                     id: result.insertId,
                     ...newUser

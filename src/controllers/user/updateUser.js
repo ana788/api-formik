@@ -6,14 +6,14 @@ const updateUser = async (req, res) => {
         const [result] = await user.update(req.body)
         if (result.affectedRows === 1) {
             res.status(200).json({
-                success: `Usuário com id:${req.body.id} atualizado com sucesso`,
+                success: `Paciente com id:${req.body.id} atualizado com sucesso`,
                 user: {
                     ...req.body
                 }
             })
         } else {
             res.status(404).json({
-                error: `Usuário com id:${req.body.id} não encontrado`,
+                error: `Paciente com id:${req.body.id} não encontrado`,
             })
         }
     } catch (err) {

@@ -4,7 +4,7 @@ const listUsers = async (req, res) => {
     try {
         const [rows, fields] = await user.list()
         if (rows.length === 0) {
-            res.status(400).json({ message: "No users found" })
+            res.status(400).json({ message: "Nenhum paciente cadastrado" })
         } else {
             res.json(rows)
         }

@@ -1,25 +1,25 @@
 import db from '../database/db.js'
 
 const list = async () => {
-   return await db.query('SELECT * FROM users')
+   return await db.query('SELECT * FROM paciente')
 }
 
 const create = async (user) => {
-    const {name, email, pass, avatar} = user
-    return await db.query('INSERT INTO users (name, email, pass, avatar) VALUES (?,?,?,?)', [name, email, pass, avatar]) //retorna se deu sucesso ou não
+    const {nome, email, data_nasc, telefone, sexo, cpf} = user
+    return await db.query('INSERT INTO paciente (nome, email, data_nasc, telefone, sexo, cpf) VALUES (?,?,?,?,?,?)', [nome, email, data_nasc, telefone, sexo, cpf]) //retorna se deu sucesso ou não
  }
 
  const get = async (id) => {
-   return await db.query('SELECT * FROM users WHERE id = ?;', [id])
+   return await db.query('SELECT * FROM paciente WHERE id = ?;', [id])
  }
 
  const remove = async (id) => {
-   return await db.query('DELETE FROM users WHERE id = ?;', [id]) 
+   return await db.query('DELETE FROM paciente WHERE id = ?;', [id]) 
 }
 
 const update = async (user) => {
-   const {id, name, email, pass, avatar} = user
-   return await db.query('UPDATE users SET name = ?, email = ?, pass = ?, avatar = ? WHERE id = ?;', [name, email, pass, avatar, id])
+   const {id, nome, email, data_nasc, telefone, sexo, cpf} = user
+   return await db.query('UPDATE paciente SET nome = ?, email = ?, data_nasc = ?, telefone = ?, sexo = ?, cpf = ? WHERE id = ?;', [nome, email, data_nasc, telefone, sexo, cpf, id])
 }
 
-export default {list, create, remove, get, update}
+export default {list, create, get, remove, update}
